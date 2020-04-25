@@ -1,10 +1,17 @@
-const initialState = { data: "some data right here" };
+const initialState = { todos: [] };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case "SETTING_GAME":
+    case "FETCH_TODOS":
       return {
         ...state,
+      };
+
+    case "FETCH_TODOS_SUCCESS":
+      console.log(payload);
+      return {
+        ...state,
+        todos: payload.todos,
       };
 
     default:
