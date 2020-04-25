@@ -1,8 +1,7 @@
 import React from "react";
-import HomePage from "./HomePage";
-
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTodos } from "../../actions";
+import HomePage from "./HomePage";
 
 const withProps = (Component) => (props) => {
   const { todos } = useSelector((state) => state);

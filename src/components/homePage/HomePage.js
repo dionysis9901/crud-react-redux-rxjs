@@ -1,12 +1,11 @@
 import React from "react";
 import Todo from "../todo";
-const HomePage = ({ todos, fetchData, checkedBox, uncheckedBox }) => {
+import Button from "../button";
+
+const HomePage = ({ todos, fetchData }) => {
   return (
     <div className="homePage">
-      <button className="homePage__button" onClick={fetchData}>
-        Fetch some Data
-      </button>
-
+      <Button content={"Get Data"} onClick={fetchData} />
       <div className="homePage__data">
         {todos.map((todo, index) => {
           return (

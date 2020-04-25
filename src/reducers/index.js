@@ -14,6 +14,11 @@ const reducer = (state = initialState, { type, payload }) => {
         todos: payload.todos,
       };
 
+    case "FETCH_TODOS_FAILED":
+      console.log(payload.message);
+      return {
+        ...state,
+      };
     default:
       return state;
   }
