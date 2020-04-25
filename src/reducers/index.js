@@ -1,6 +1,4 @@
-const initialState = {
-  name: "lorem",
-};
+const initialState = { data: "some data right here" };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -8,6 +6,9 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
       };
+
+    default:
+      return state;
   }
 };
 
