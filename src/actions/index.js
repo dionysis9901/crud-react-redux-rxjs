@@ -17,6 +17,15 @@ export const deleteTodo = (id) => ({
   payload: { id },
 });
 
+export const postDeleteSuccessfull = () => ({
+  type: "POST_DELETED_SUCCESSFULL",
+});
+
+export const postDeleteFailed = (msg) => ({
+  type: "POST_DELETED_FAILED",
+  payload: { msg },
+});
+
 export const createTodo = (title) => ({
   type: "CREATE_TODO",
   payload: { title },
