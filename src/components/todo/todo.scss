@@ -6,6 +6,8 @@
   &__title {
     display: inline-block;
     margin: 5px 5px;
+    width: 300px;
+    overflow: hidden;
   }
 
   &__status {

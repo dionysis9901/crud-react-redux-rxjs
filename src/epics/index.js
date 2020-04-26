@@ -5,6 +5,7 @@ import {
   getTodosFailed,
   postCreated,
   postFailed,
+  getTodos,
 } from "../actions";
 import { ajax } from "rxjs/ajax";
 
@@ -25,11 +26,12 @@ export const createTodoEpic = (action$) =>
   action$.pipe(
     ofType("CREATE_TODO"),
     switchMap((action) => {
+      console.log(action.payload);
       const request = {
         url: `https://arr-todo.herokuapp.com/todos`,
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: { title: "lorem ipsum dolor sit" },
+        body: { userId: 1, title: action.payload.title, completed: false },
       };
 
       return ajax(request).pipe(
@@ -43,4 +45,12 @@ export const createTodoEpic = (action$) =>
         })
       );
     })
+  );
+
+export const deleteTodoEpic = (action$) => action$.pipe(ofType("DELETE_TODO"));
+
+export const postCreatedEpic = (action$) =>
+  action$.pipe(
+    ofType("POST_CREATED"),
+    map(() => getTodos())
   );

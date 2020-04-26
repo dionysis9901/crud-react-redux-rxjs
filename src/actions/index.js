@@ -17,8 +17,9 @@ export const deleteTodo = (id) => ({
   payload: { id },
 });
 
-export const createTodo = () => ({
+export const createTodo = (title) => ({
   type: "CREATE_TODO",
+  payload: { title },
 });
 
 export const postCreated = () => ({
@@ -29,3 +30,12 @@ export const postFailed = (msg) => ({
   type: "POST_FAILED",
   payload: { msg },
 });
+
+export const openModal = () => ({ type: "OPEN_MODAL" });
+
+export const getInput = (title) => ({
+  type: "GET_INPUT",
+  payload: { title },
+});
+
+export const cancelPost = () => ({ type: "CANCEL_POST" });

@@ -1,4 +1,4 @@
-const initialState = { todos: [] };
+const initialState = { todos: [], createTodoModal: false, title: null };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -24,16 +24,29 @@ const reducer = (state = initialState, { type, payload }) => {
       };
 
     case "CREATE_TODO": {
-      return { ...state };
+      return { ...state, createTodoModal: true };
     }
 
     case "POST_CREATED": {
-      return { ...state };
+      return { ...state, createTodoModal: false, title: null };
     }
 
     case "POST_FAILED": {
-      return { ...state };
+      return { ...state, createTodoModal: false, title: null };
     }
+
+    case "OPEN_MODAL": {
+      return { ...state, createTodoModal: true };
+    }
+
+    case "GET_INPUT": {
+      return { ...state, title: payload.title };
+    }
+
+    case "CANCEL_POST": {
+      return { ...state, title: null, createTodoModal: false };
+    }
+
     default:
       return state;
   }
