@@ -26,6 +26,15 @@ export const postDeleteFailed = (msg) => ({
   payload: { msg },
 });
 
+export const completeStatusUpdateSuccesfull = () => ({
+  type: "COMPLETE_STATUS_UPDATE_SUCCESSFULL",
+});
+
+export const completeStatusUpdateFailed = (msg) => ({
+  type: "COMPLETE_STATUS_UPDATE_FAILED",
+  payload: { msg },
+});
+
 export const createTodo = (title) => ({
   type: "CREATE_TODO",
   payload: { title },
@@ -38,6 +47,11 @@ export const postCreated = () => ({
 export const postFailed = (msg) => ({
   type: "POST_FAILED",
   payload: { msg },
+});
+
+export const todoCompletedStatusChanged = (completed, id, title) => ({
+  type: "TODO_COMPLETED_STATUS_CHANGED",
+  payload: { completed, id, title },
 });
 
 export const openModal = () => ({ type: "OPEN_MODAL" });

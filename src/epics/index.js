@@ -8,6 +8,8 @@ import {
   getTodos,
   postDeleteSuccessfull,
   postDeleteFailed,
+  completeStatusUpdateSuccesfull,
+  completeStatusUpdateFailed,
 } from "../actions";
 import { ajax } from "rxjs/ajax";
 
@@ -49,10 +51,33 @@ export const createTodoEpic = (action$) =>
     })
   );
 
-export const postCreatedEpic = (action$) =>
+export const updateCompleteStatusEpic = (action$) =>
   action$.pipe(
-    ofType("POST_CREATED"),
-    map(() => getTodos())
+    ofType("TODO_COMPLETED_STATUS_CHANGED"),
+    switchMap((action) => {
+      console.log(action.payload);
+      const request = {
+        url: `https://arr-todo.herokuapp.com/todos/${action.payload.id}`,
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: {
+          userId: 1,
+          title: action.payload.title,
+          completed: !action.payload.completed,
+        },
+      };
+
+      return ajax(request).pipe(
+        map((res) => {
+          if (res.status === 200 || res.status === 201) {
+            console.log(res);
+            return completeStatusUpdateSuccesfull();
+          } else {
+            return completeStatusUpdateFailed(res.errorMessage);
+          }
+        })
+      );
+    })
   );
 
 export const deleteTodoEpic = (action$) =>
@@ -81,6 +106,12 @@ export const deleteTodoEpic = (action$) =>
 
 export const postDeletedEpic = (action$) =>
   action$.pipe(
-    ofType("POST_DELETED_SUCCESSFULL"),
+    ofType("POST_DELETED_SUCCESSFULL" || "POST_CREATED"),
+    map(() => getTodos())
+  );
+
+export const postCreatedEpic = (action$) =>
+  action$.pipe(
+    ofType("POST_CREATED"),
     map(() => getTodos())
   );

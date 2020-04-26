@@ -8,6 +8,7 @@ import {
   postCreatedEpic,
   deleteTodoEpic,
   postDeletedEpic,
+  updateCompleteStatusEpic,
 } from "../epics";
 
 const configureStore = () => {
@@ -17,6 +18,7 @@ const configureStore = () => {
     postCreatedEpic,
     deleteTodoEpic,
     postDeletedEpic,
+    updateCompleteStatusEpic,
   ];
   const epics = combineEpics(...epicsArr);
   const epicMiddleware = createEpicMiddleware();

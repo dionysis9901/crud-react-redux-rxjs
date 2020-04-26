@@ -23,6 +23,8 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
       };
 
+    case "TODO_COMPLETED_STATUS_CHANGED":
+      return { ...state };
     case "CREATE_TODO": {
       return { ...state, createTodoModal: true };
     }
@@ -46,6 +48,12 @@ const reducer = (state = initialState, { type, payload }) => {
     case "CANCEL_POST": {
       return { ...state, title: null, createTodoModal: false };
     }
+
+    case "COMPLETE_STATUS_UPDATE_SUCCESSFULL":
+      return { ...state };
+
+    case "COMPLETE_STATUS_UPDATE_FAILED":
+      return { ...state };
 
     default:
       return state;
