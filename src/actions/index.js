@@ -1,13 +1,13 @@
-export const fetchTodos = () => ({
-  type: "FETCH_TODOS",
+export const getTodos = () => ({
+  type: "GET_TODOS",
 });
 
-export const fetchTodosSuccess = (todos) => ({
-  type: "FETCH_TODOS_SUCCESS",
+export const getTodosSuccess = (todos) => ({
+  type: "GET_TODOS_SUCCESS",
   payload: { todos },
 });
 
-export const fetchTodosFailed = (message) => ({
-  type: "FETCH_TODOS_FAILED",
+export const getTodosFailed = (message) => ({
+  type: "GET_TODOS_FAILED",
   payload: { message },
 });

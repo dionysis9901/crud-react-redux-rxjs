@@ -1,11 +1,18 @@
 import React from "react";
 import Todo from "../todo";
 import Button from "../button";
+import "./homepage.scss";
 
 const HomePage = ({ todos, fetchData }) => {
   return (
     <div className="homePage">
-      <Button content={"Get Data"} onClick={fetchData} />
+      <h1 className="homePage__heading">CRUD </h1>
+      <div className="homePage__buttons__wrapper">
+        {" "}
+        <Button content={"Get Todos"} onClick={fetchData} />
+        <Button content={"Create Todos"} />
+      </div>
+
       <div className="homePage__data">
         {todos.map((todo, index) => {
           return (

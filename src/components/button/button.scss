@@ -1,0 +1,17 @@
+.homePage__Btn {
+  background-color: white;
+  color: rgb(59, 59, 59);
+
+  border: 1px solid rgb(59, 59, 59);
+  border-radius: 3px;
+  padding: 5px;
+  margin: 0 10px;
+  transition: 0.5s;
+}
+
+.homePage__Btn:hover {
+  cursor: pointer;
+  background-color: rgb(206, 206, 206);
+  color: rgb(58, 58, 58);
+  transform: scale(1.1);
+}
