@@ -1,7 +1,10 @@
 import React from "react";
 import "./todo.scss";
+import { deleteTodo } from "../../actions";
+import { useDispatch } from "react-redux";
 import { BsFillTrashFill, BsGear } from "react-icons/bs";
 const Todo = ({ userId, id, title, completed }) => {
+  const dispatch = useDispatch();
   return (
     <div className="todo">
       <p className="todo__title">{title}</p>
@@ -14,7 +17,10 @@ const Todo = ({ userId, id, title, completed }) => {
       <button className="todo__buttons__btn">
         <BsGear />
       </button>
-      <button className="todo__buttons__btn">
+      <button
+        className="todo__buttons__btn"
+        onClick={() => dispatch(deleteTodo(id))}
+      >
         <BsFillTrashFill />
       </button>
     </div>

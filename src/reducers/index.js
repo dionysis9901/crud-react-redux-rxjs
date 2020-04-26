@@ -8,17 +8,32 @@ const reducer = (state = initialState, { type, payload }) => {
       };
 
     case "GET_TODOS_SUCCESS":
-      console.log(payload);
       return {
         ...state,
         todos: payload.todos,
       };
 
     case "GET_TODOS_FAILED":
-      console.log(payload.message);
       return {
         ...state,
       };
+
+    case "DELETE_TODO_SUCCESS":
+      return {
+        ...state,
+      };
+
+    case "CREATE_TODO": {
+      return { ...state };
+    }
+
+    case "POST_CREATED": {
+      return { ...state };
+    }
+
+    case "POST_FAILED": {
+      return { ...state };
+    }
     default:
       return state;
   }

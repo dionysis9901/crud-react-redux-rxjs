@@ -3,14 +3,14 @@ import Todo from "../todo";
 import Button from "../button";
 import "./homepage.scss";
 
-const HomePage = ({ todos, fetchData }) => {
+const HomePage = ({ todos, fetchData, createPost }) => {
   return (
     <div className="homePage">
       <h1 className="homePage__heading">CRUD </h1>
       <div className="homePage__buttons__wrapper">
         {" "}
         <Button content={"Get Todos"} onClick={fetchData} />
-        <Button content={"Create Todos"} />
+        <Button content={"Create Todo"} onClick={createPost} />
       </div>
 
       <div className="homePage__data">

@@ -1,6 +1,12 @@
-import { mergeMap, catchError } from "rxjs/operators";
+import { mergeMap, catchError, map, switchMap, mapTo } from "rxjs/operators";
 import { ofType } from "redux-observable";
-import { getTodosSuccess, getTodosFailed } from "../actions";
+import {
+  getTodosSuccess,
+  getTodosFailed,
+  postCreated,
+  postFailed,
+} from "../actions";
+import { ajax } from "rxjs/ajax";
 
 const fetch = require("node-fetch");
 
@@ -13,4 +19,28 @@ export const fetchEpic = (action$) =>
       return getTodosSuccess(todos);
     }),
     catchError((err) => Promise.resolve(getTodosFailed(err.message)))
+  );
+
+export const createTodoEpic = (action$) =>
+  action$.pipe(
+    ofType("CREATE_TODO"),
+    switchMap((action) => {
+      const request = {
+        url: `https://arr-todo.herokuapp.com/todos`,
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: { title: "lorem ipsum dolor sit" },
+      };
+
+      return ajax(request).pipe(
+        map((res) => {
+          if (res.status === 200 || res.status === 201) {
+            console.log(res);
+            return postCreated();
+          } else {
+            return postFailed(res.errorMessage);
+          }
+        })
+      );
+    })
   );
