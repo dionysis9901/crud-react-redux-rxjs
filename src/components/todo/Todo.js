@@ -1,6 +1,10 @@
 import React from "react";
 import "./todo.scss";
-import { deleteTodo, todoCompletedStatusChanged } from "../../actions";
+import {
+  deleteTodo,
+  todoCompletedStatusChanged,
+  openSettings,
+} from "../../actions";
 import { useDispatch } from "react-redux";
 import { BsFillTrashFill, BsGear } from "react-icons/bs";
 const Todo = ({ userId, id, title, completed }) => {
@@ -12,12 +16,18 @@ const Todo = ({ userId, id, title, completed }) => {
         type="checkbox"
         className="todo__status"
         defaultChecked={completed ? true : false}
-        onChange={(event) =>
-          dispatch(todoCompletedStatusChanged(completed, id, title))
-        }
+        onChange={(event) => {
+          return dispatch(todoCompletedStatusChanged(completed, id, title));
+        }}
       />
       <div className="todo__buttons"></div>
-      <button className="todo__buttons__btn">
+      <button
+        className="todo__buttons__btn"
+        onClick={() => {
+          console.log(completed);
+          return dispatch(openSettings(id, completed));
+        }}
+      >
         <BsGear />
       </button>
       <button

@@ -6,21 +6,39 @@ import {
   openModal,
   getInput,
   cancelPost,
+  changeTitle,
+  newTitleCanceled,
+  newTitleChanged,
 } from "../../actions";
 import HomePage from "./HomePage";
 
 const withProps = (Component) => (props) => {
-  const { todos, createTodoModal, title } = useSelector((state) => state);
+  const {
+    todos,
+    createTodoModal,
+    title,
+    settingsOn,
+    newTitle,
+    itemId,
+    itemCompletedStatus,
+  } = useSelector((state) => state);
   const dispatch = useDispatch();
   return (
     <HomePage
       todos={todos}
       createTodoModal={createTodoModal}
+      settingsOn={settingsOn}
       createPost={() => dispatch(createTodo(title))}
+      newTitleChanged={() => {
+        console.log(itemCompletedStatus);
+        return dispatch(newTitleChanged(newTitle, itemId, itemCompletedStatus));
+      }}
       fetchData={() => dispatch(getTodos())}
       openModal={() => dispatch(openModal())}
       getInput={(title) => dispatch(getInput(title))}
+      changeTitle={(newTitle) => dispatch(changeTitle(newTitle))}
       cancelPost={() => dispatch(cancelPost())}
+      newTitleCanceled={() => dispatch(newTitleCanceled())}
     />
   );
 };

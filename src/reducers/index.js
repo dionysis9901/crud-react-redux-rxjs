@@ -1,7 +1,16 @@
-const initialState = { todos: [], createTodoModal: false, title: null };
+const initialState = {
+  todos: [],
+  createTodoModal: false,
+  title: null,
+  settingsOn: false,
+  newTitle: null,
+  itemId: null,
+  itemCompletedStatus: null,
+};
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    // GET
     case "GET_TODOS":
       return {
         ...state,
@@ -17,14 +26,22 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
       };
+    // GET END
+
+    //DELETE
+    case "DELETE_TODO":
+      return { ...state };
 
     case "DELETE_TODO_SUCCESS":
       return {
         ...state,
       };
 
-    case "TODO_COMPLETED_STATUS_CHANGED":
+    case "POST_DELETED_FAILED":
       return { ...state };
+    //DELETE  END
+
+    // CREATE
     case "CREATE_TODO": {
       return { ...state, createTodoModal: true };
     }
@@ -49,12 +66,57 @@ const reducer = (state = initialState, { type, payload }) => {
       return { ...state, title: null, createTodoModal: false };
     }
 
+    // CREATE END
+
+    //COMPLETE
+
+    case "TODO_COMPLETED_STATUS_CHANGED":
+      return { ...state, itemCompletedStatus: !payload.completed };
+
     case "COMPLETE_STATUS_UPDATE_SUCCESSFULL":
-      return { ...state };
+      return { ...state, itemCompletedStatus: null };
 
     case "COMPLETE_STATUS_UPDATE_FAILED":
       return { ...state };
 
+    //COMPLETE END
+
+    //NEW TITLE
+    case "CHANGE_TITLE":
+      return { ...state, newTitle: payload.title };
+
+    case "OPEN_SETTINGS":
+      return {
+        ...state,
+        settingsOn: true,
+        itemId: payload.id,
+        itemCompletedStatus: payload.completed,
+      };
+
+    case "NEW_TITLE_CHANGED": {
+      return { ...state, settingsOn: false };
+    }
+
+    case "NEW_TITLE_CANCELED": {
+      return {
+        ...state,
+        settingsOn: false,
+        newTitle: null,
+        itemId: null,
+        itemCompletedStatus: null,
+      };
+    }
+
+    case "TITLE_CHANGED_SUCCESFULL": {
+      return {
+        ...state,
+        newTitle: null,
+        itemId: null,
+        itemCompletedStatus: null,
+      };
+    }
+
+    //NEW TITLE END
     default:
       return state;
   }

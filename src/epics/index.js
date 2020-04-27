@@ -10,6 +10,8 @@ import {
   postDeleteFailed,
   completeStatusUpdateSuccesfull,
   completeStatusUpdateFailed,
+  titleChangedSuccesfull,
+  titleChangedFailed,
 } from "../actions";
 import { ajax } from "rxjs/ajax";
 
@@ -30,7 +32,6 @@ export const createTodoEpic = (action$) =>
   action$.pipe(
     ofType("CREATE_TODO"),
     switchMap((action) => {
-      console.log(action.payload);
       const request = {
         url: `https://arr-todo.herokuapp.com/todos`,
         method: "POST",
@@ -51,11 +52,33 @@ export const createTodoEpic = (action$) =>
     })
   );
 
+export const deleteTodoEpic = (action$) =>
+  action$.pipe(
+    ofType("DELETE_TODO"),
+    switchMap((action) => {
+      const request = {
+        url: `https://arr-todo.herokuapp.com/todos/${action.payload.id}`,
+        method: "DELETE",
+        headers: { "content-type": "application/json" },
+      };
+
+      return ajax(request).pipe(
+        map((res) => {
+          if (res.status === 200 || res.status === 201) {
+            console.log(res);
+            return postDeleteSuccessfull();
+          } else {
+            return postDeleteFailed(res.errorMessage);
+          }
+        })
+      );
+    })
+  );
+
 export const updateCompleteStatusEpic = (action$) =>
   action$.pipe(
     ofType("TODO_COMPLETED_STATUS_CHANGED"),
     switchMap((action) => {
-      console.log(action.payload);
       const request = {
         url: `https://arr-todo.herokuapp.com/todos/${action.payload.id}`,
         method: "PUT",
@@ -80,24 +103,34 @@ export const updateCompleteStatusEpic = (action$) =>
     })
   );
 
-export const deleteTodoEpic = (action$) =>
+export const updateCompletedSuccesfullEpic = (action$) =>
   action$.pipe(
-    ofType("DELETE_TODO"),
+    ofType("COMPLETE_STATUS_UPDATE_SUCCESSFULL"),
+    map(() => getTodos())
+  );
+
+export const titleChangedEpic = (action$) =>
+  action$.pipe(
+    ofType("NEW_TITLE_CHANGED"),
     switchMap((action) => {
-      console.log(action.payload);
       const request = {
         url: `https://arr-todo.herokuapp.com/todos/${action.payload.id}`,
-        method: "DELETE",
+        method: "PUT",
         headers: { "content-type": "application/json" },
+        body: {
+          userId: 1,
+          title: action.payload.title,
+          completed: action.payload.completed,
+        },
       };
 
       return ajax(request).pipe(
         map((res) => {
           if (res.status === 200 || res.status === 201) {
             console.log(res);
-            return postDeleteSuccessfull();
+            return titleChangedSuccesfull();
           } else {
-            return postDeleteFailed(res.errorMessage);
+            return titleChangedFailed(res.errorMessage);
           }
         })
       );
@@ -113,5 +146,11 @@ export const postDeletedEpic = (action$) =>
 export const postCreatedEpic = (action$) =>
   action$.pipe(
     ofType("POST_CREATED"),
+    map(() => getTodos())
+  );
+
+export const titleChangedSuccessEpic = (action$) =>
+  action$.pipe(
+    ofType("TITLE_CHANGED_SUCCESFULL"),
     map(() => getTodos())
   );

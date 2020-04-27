@@ -11,6 +11,11 @@ const HomePage = ({
   openModal,
   getInput,
   cancelPost,
+  settingsOn,
+  changeTitle,
+  newTitleCanceled,
+  newTitleChanged,
+  itemId,
 }) => {
   if (createTodoModal) {
     return (
@@ -34,6 +39,32 @@ const HomePage = ({
             extraClassName={"modal__button"}
           />
         </div>
+      </div>
+    );
+  } else if (settingsOn) {
+    return (
+      <div className="homePage">
+        <h1 className="homePage__heading">🥽 C R U D 🥽</h1>
+        <input
+          type="text"
+          placeholder="Change Name 🤖"
+          className="modal__input"
+          onChange={(event) => {
+            return changeTitle(event.target.value);
+          }}
+        ></input>
+
+        <Button
+          content={"Create new TIttle"}
+          onClick={newTitleChanged}
+          extraClassName={"modal__button"}
+        />
+
+        <Button
+          content={"Back"}
+          onClick={newTitleCanceled}
+          extraClassName={"modal__button"}
+        />
       </div>
     );
   } else {

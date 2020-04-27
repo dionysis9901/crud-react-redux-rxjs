@@ -61,4 +61,31 @@ export const getInput = (title) => ({
   payload: { title },
 });
 
+export const changeTitle = (title) => ({
+  type: "CHANGE_TITLE",
+  payload: { title },
+});
+
+export const newTitleCanceled = () => ({
+  type: "NEW_TITLE_CANCELED",
+});
 export const cancelPost = () => ({ type: "CANCEL_POST" });
+
+export const newTitleChanged = (title, id, completed) => ({
+  type: "NEW_TITLE_CHANGED",
+  payload: { title, id, completed },
+});
+
+export const openSettings = (id, completed) => ({
+  type: "OPEN_SETTINGS",
+  payload: { id, completed },
+});
+
+export const titleChangedSuccesfull = () => ({
+  type: "TITLE_CHANGED_SUCCESFULL",
+});
+
+export const titleChangedFailed = (msg) => ({
+  type: "TITLE_CHANGED_FAILED",
+  payload: { msg },
+});
