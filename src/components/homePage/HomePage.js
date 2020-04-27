@@ -20,6 +20,7 @@ const HomePage = ({
     return (
       <div className="homePage">
         <h1 className="homePage__heading">🥽 C R U D 🥽</h1>
+        <h3 className="homePage__CreateTodoScreen">Create A New Todo!</h3>
         <div className="modal">
           <input
             type="text"
@@ -50,26 +51,28 @@ const HomePage = ({
     return (
       <div className="homePage">
         <h1 className="homePage__heading">🥽 C R U D 🥽</h1>
-        <input
-          type="text"
-          placeholder="Change Name 🤖"
-          className="modal__input"
-          onChange={(event) => {
-            return userRenamedTodo(event.target.value);
-          }}
-        ></input>
-
-        <Button
-          content={"Create new TIttle"}
-          onClick={titleRenamed}
-          extraClassName={"modal__button"}
-        />
-
-        <Button
-          content={"Back"}
-          onClick={userCancelRenameTodo}
-          extraClassName={"modal__button"}
-        />
+        <h3 className="homePage__renameTodo">Rename Todo!</h3>
+        <div className="modal">
+          {" "}
+          <input
+            type="text"
+            placeholder="Change Name 🤖"
+            className="modal__input"
+            onChange={(event) => {
+              return userRenamedTodo(event.target.value);
+            }}
+          ></input>
+          <Button
+            content={"Rename!"}
+            onClick={titleRenamed}
+            extraClassName={"modal__button"}
+          />
+          <Button
+            content={"Back"}
+            onClick={userCancelRenameTodo}
+            extraClassName={"modal__button"}
+          />
+        </div>
 
         <div className="homePage__signature">
           <p className="homePage__signature__text">
