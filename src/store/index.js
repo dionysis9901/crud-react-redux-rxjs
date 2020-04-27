@@ -3,28 +3,28 @@ import { createEpicMiddleware, combineEpics } from "redux-observable";
 import reducer from "../reducers";
 
 import {
-  fetchEpic,
+  getTodosEpic,
   createTodoEpic,
   createTodoSuccessEpic,
+  todoRenameEpic,
+  todoRenameSuccessEpic,
   deleteTodoEpic,
-  postDeletedEpic,
-  updateCompleteStatusEpic,
-  titleRenamedEpic,
-  titleRenamedSuccessEpic,
-  updateCompletedSuccesfullEpic,
+  deleteTodoSuccessEpic,
+  updateStatusEpic,
+  updateStatusSuccessEpic,
 } from "../epics";
 
 const configureStore = () => {
   const epicsArr = [
-    fetchEpic,
+    getTodosEpic,
     createTodoEpic,
     createTodoSuccessEpic,
     deleteTodoEpic,
-    postDeletedEpic,
-    updateCompleteStatusEpic,
-    titleRenamedEpic,
-    titleRenamedSuccessEpic,
-    updateCompletedSuccesfullEpic,
+    deleteTodoSuccessEpic,
+    updateStatusEpic,
+    todoRenameEpic,
+    todoRenameSuccessEpic,
+    updateStatusSuccessEpic,
   ];
   const epics = combineEpics(...epicsArr);
   const epicMiddleware = createEpicMiddleware();
