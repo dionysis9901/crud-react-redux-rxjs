@@ -1,14 +1,15 @@
 import React from "react";
-import "./todo.scss";
-import {
-  deleteTodo,
-  completeStatusUpdate,
-  userOpenRenameScreen,
-} from "../../actions";
-import { useDispatch } from "react-redux";
+import "./todos.scss";
 import { AiFillEdit, AiTwotoneDelete } from "react-icons/ai";
-const Todo = ({ userId, id, title, completed }) => {
-  const dispatch = useDispatch();
+const Todos = ({
+  userId,
+  id,
+  title,
+  completed,
+  userOpenRenameScreen,
+  completeStatusUpdate,
+  deleteTodo,
+}) => {
   if (completed) {
     return (
       <div className="todo inactive">
@@ -17,24 +18,20 @@ const Todo = ({ userId, id, title, completed }) => {
           type="checkbox"
           className="todo__status"
           defaultChecked={completed ? true : false}
-          onChange={(event) => {
-            return dispatch(completeStatusUpdate(completed, id, title));
-          }}
+          onChange={completeStatusUpdate}
         />
         <div className="todo__buttons todo__inactive__buttons">
           <button
             disabled={true}
             className="inactive__inactiveBtn"
-            onClick={() => {
-              return dispatch(userOpenRenameScreen(id, completed));
-            }}
+            onClick={userOpenRenameScreen}
           >
             <AiFillEdit />
           </button>
           <button
             disabled={true}
             className="inactive__inactiveBtn"
-            onClick={() => dispatch(deleteTodo(id))}
+            onClick={deleteTodo}
           >
             <AiTwotoneDelete />
           </button>
@@ -49,24 +46,14 @@ const Todo = ({ userId, id, title, completed }) => {
           type="checkbox"
           className="todo__status"
           defaultChecked={completed ? true : false}
-          onChange={(event) => {
-            return dispatch(completeStatusUpdate(completed, id, title));
-          }}
+          onChange={completeStatusUpdate}
         />
         <div className="todo__buttons">
           {" "}
-          <button
-            className="todo__buttons__btn"
-            onClick={() => {
-              return dispatch(userOpenRenameScreen(id, completed));
-            }}
-          >
+          <button className="todo__buttons__btn" onClick={userOpenRenameScreen}>
             <AiFillEdit />
           </button>
-          <button
-            className="todo__buttons__btn"
-            onClick={() => dispatch(deleteTodo(id))}
-          >
+          <button className="todo__buttons__btn" onClick={deleteTodo}>
             <AiTwotoneDelete />
           </button>
         </div>
@@ -74,4 +61,4 @@ const Todo = ({ userId, id, title, completed }) => {
     );
   }
 };
-export default Todo;
+export default Todos;

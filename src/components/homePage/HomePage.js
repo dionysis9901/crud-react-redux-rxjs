@@ -1,5 +1,5 @@
 import React from "react";
-import Todo from "../todo";
+import Todo from "../todos";
 import Button from "../button";
 import "./homepage.scss";
 
@@ -90,19 +90,7 @@ const HomePage = ({
           <Button content={"Create Todo"} onClick={openCreateTodoScreen} />
         </div>
 
-        <div className="homePage__data">
-          {todos.map((todo, index) => {
-            return (
-              <Todo
-                key={index}
-                userId={todo.userId}
-                id={todo.id}
-                title={todo.title}
-                completed={todo.completed}
-              />
-            );
-          })}
-        </div>
+        <Todo />
 
         <div className="homePage__signature">
           <p className="homePage__signature__text">

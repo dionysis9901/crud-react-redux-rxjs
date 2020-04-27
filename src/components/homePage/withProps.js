@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import HomePage from "./HomePage";
 import {
   getTodos,
   createTodo,
@@ -10,7 +11,6 @@ import {
   userCancelRenameTodo,
   titleRenamed,
 } from "../../actions";
-import HomePage from "./HomePage";
 
 const withProps = (Component) => (props) => {
   const {
@@ -30,7 +30,6 @@ const withProps = (Component) => (props) => {
       settingsOn={settingsOn}
       createPost={() => dispatch(createTodo(title))}
       titleRenamed={() => {
-        console.log(itemCompletedStatus);
         return dispatch(titleRenamed(newTitle, itemId, itemCompletedStatus));
       }}
       fetchData={() => dispatch(getTodos())}
