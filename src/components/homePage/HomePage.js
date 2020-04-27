@@ -15,7 +15,6 @@ const HomePage = ({
   userRenamedTodo,
   userCancelRenameTodo,
   titleRenamed,
-  itemId,
 }) => {
   if (createTodoModal) {
     return (
@@ -38,6 +37,12 @@ const HomePage = ({
             onClick={userCancelNewTodo}
             extraClassName={"modal__button"}
           />
+        </div>
+
+        <div className="homePage__signature">
+          <p className="homePage__signature__text">
+            Made by Dionysis Koufis with ❤️ and ⚛️
+          </p>
         </div>
       </div>
     );
@@ -65,6 +70,12 @@ const HomePage = ({
           onClick={userCancelRenameTodo}
           extraClassName={"modal__button"}
         />
+
+        <div className="homePage__signature">
+          <p className="homePage__signature__text">
+            Made by Dionysis Koufis with ❤️ and ⚛️
+          </p>
+        </div>
       </div>
     );
   } else {
@@ -88,6 +99,12 @@ const HomePage = ({
               />
             );
           })}
+        </div>
+
+        <div className="homePage__signature">
+          <p className="homePage__signature__text">
+            Made by Dionysis Koufis with ❤️ and ⚛️
+          </p>
         </div>
       </div>
     );
