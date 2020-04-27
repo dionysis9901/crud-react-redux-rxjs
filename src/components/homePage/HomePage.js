@@ -19,12 +19,20 @@ const HomePage = ({
   if (createTodoModal) {
     return (
       <div className="homePage">
-        <h1 className="homePage__heading">🥽 C R U D 🥽</h1>
+        <h1 className="homePage__heading">
+          <span role="img" aria-label="glasses">
+            🥽
+          </span>{" "}
+          C R U D{" "}
+          <span role="img" aria-label="glasses">
+            🥽
+          </span>
+        </h1>
         <h3 className="homePage__CreateTodoScreen">Create A New Todo!</h3>
         <div className="modal">
           <input
             type="text"
-            placeholder="Give A Nice Title 🤖"
+            placeholder="Give A Nice Title"
             className="modal__input"
             onChange={(event) => userTypedNameForNewTodo(event.target.value)}
           ></input>
@@ -42,7 +50,14 @@ const HomePage = ({
 
         <div className="homePage__signature">
           <p className="homePage__signature__text">
-            Made by Dionysis Koufis with ❤️ and ⚛️
+            Made by Dionysis Koufis with{" "}
+            <span role="img" aria-label="heart">
+              ❤️
+            </span>{" "}
+            and{" "}
+            <span role="img" aria-label="react">
+              ⚛️
+            </span>
           </p>
         </div>
       </div>
@@ -50,13 +65,21 @@ const HomePage = ({
   } else if (settingsOn) {
     return (
       <div className="homePage">
-        <h1 className="homePage__heading">🥽 C R U D 🥽</h1>
+        <h1 className="homePage__heading">
+          <span role="img" aria-label="glasses">
+            🥽
+          </span>{" "}
+          C R U D{" "}
+          <span role="img" aria-label="glasses">
+            🥽
+          </span>
+        </h1>
         <h3 className="homePage__renameTodo">Rename Todo!</h3>
         <div className="modal">
           {" "}
           <input
             type="text"
-            placeholder="Change Name 🤖"
+            placeholder="Change Name "
             className="modal__input"
             onChange={(event) => {
               return userRenamedTodo(event.target.value);
@@ -76,7 +99,14 @@ const HomePage = ({
 
         <div className="homePage__signature">
           <p className="homePage__signature__text">
-            Made by Dionysis Koufis with ❤️ and ⚛️
+            Made by Dionysis Koufis with{" "}
+            <span role="img" aria-label="heart">
+              ❤️
+            </span>{" "}
+            and{" "}
+            <span role="img" aria-label="react">
+              ⚛️
+            </span>
           </p>
         </div>
       </div>
@@ -84,7 +114,15 @@ const HomePage = ({
   } else {
     return (
       <div className="homePage">
-        <h1 className="homePage__heading">🥽 C R U D 🥽</h1>
+        <h1 className="homePage__heading">
+          <span role="img" aria-label="glasses">
+            🥽
+          </span>{" "}
+          C R U D{" "}
+          <span role="img" aria-label="glasses">
+            🥽
+          </span>
+        </h1>
         <div className="homePage__buttons__wrapper">
           <Button content={"Get Todos"} onClick={fetchData} />
           <Button content={"Create Todo"} onClick={openCreateTodoScreen} />
@@ -94,7 +132,14 @@ const HomePage = ({
 
         <div className="homePage__signature">
           <p className="homePage__signature__text">
-            Made by Dionysis Koufis with ❤️ and ⚛️
+            Made by Dionysis Koufis with{" "}
+            <span role="img" aria-label="heart">
+              ❤️
+            </span>{" "}
+            and{" "}
+            <span role="img" aria-label="react">
+              ⚛️
+            </span>
           </p>
         </div>
       </div>
