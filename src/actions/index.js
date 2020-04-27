@@ -1,110 +1,58 @@
-export const getTodos = () => ({
-  type: "GET_TODOS",
-});
+import {
+  createTodo,
+  createTodoSuccess,
+  createTodoFailed,
+} from "./createTodoActions";
 
-export const getTodosSuccess = (todos) => ({
-  type: "GET_TODOS_SUCCESS",
-  payload: { todos },
-});
+import {
+  deleteTodo,
+  deleteTodoSuccess,
+  deleteTodoFailed,
+} from "./deleteActions";
 
-export const getTodosFailed = (message) => ({
-  type: "GET_TODOS_FAILED",
-  payload: { message },
-});
-//delete
-export const deleteTodo = (id) => ({
-  type: "DELETE_TODO",
-  payload: { id },
-});
+import { getTodos, getTodosSuccess, getTodosFailed } from "./getTodoActions";
 
-export const deleteTodoSuccess = () => ({
-  type: "DELETE_TODO_SUCCESS",
-});
+import {
+  completeStatusUpdate,
+  completeStatusUpdateSuccess,
+  completeStatusUpdateFailed,
+} from "./statusActions";
 
-export const deleteTodoFailed = (msg) => ({
-  type: "DELETE_TODO_FAILED",
-  payload: { msg },
-});
-//delete end
+import {
+  titleRenamed,
+  titleRenamedSuccess,
+  titleRenamedFailed,
+} from "./renameActions";
 
-//status
-export const completeStatusUpdate = (completed, id, title) => ({
-  type: "COMPLETE_STATUS_UPDATE",
-  payload: { completed, id, title },
-});
+import {
+  userTypedNameForNewTodo,
+  userRenamedTodo,
+  userCancelNewTodo,
+  userCancelRenameTodo,
+  openCreateTodoScreen,
+  userOpenRenameScreen,
+} from "./uiActions";
 
-export const completeStatusUpdateSuccess = () => ({
-  type: "COMPLETE_STATUS_UPDATE_SUCCESS",
-});
-
-export const completeStatusUpdateFailed = (msg) => ({
-  type: "COMPLETE_STATUS_UPDATE_FAILED",
-  payload: { msg },
-});
-//status end
-
-//create
-
-export const createTodo = (title) => ({
-  type: "CREATE_TODO",
-  payload: { title },
-});
-
-export const createTodoSuccess = () => ({
-  type: "CREATE_TODO_SUCCESS",
-});
-
-export const createTodoFailed = (msg) => ({
-  type: "CREATE_TODO_FAILED",
-  payload: { msg },
-});
-//create end
-//title
-
-export const titleRenamed = (title, id, completed) => ({
-  type: "TITLE_RENAMED",
-  payload: { title, id, completed },
-});
-
-export const titleRenamedSuccess = () => ({
-  type: "TITLE_RENAMED_SUCCESS",
-});
-
-export const titleRenamedFailed = (msg) => ({
-  type: "TITLE_RENAMED_FAILED",
-  payload: { msg },
-});
-
-//title end
-
-//User Changes
-
-export const userTypedNameForNewTodo = (title) => ({
-  type: "USER_TYPED_NAME_FOR_NEW_TODO",
-  payload: { title },
-});
-
-export const userRenamedTodo = (title) => ({
-  type: "USER_RENAMED_TODO",
-  payload: { title },
-});
-//User Changes End
-
-//User Cancels
-
-export const userCancelNewTodo = () => ({ type: "USER_CANCEL_NEW_TODO" });
-
-export const userCancelRenameTodo = () => ({
-  type: "USER_CANCEL_RENAME_TODO",
-});
-
-//User Cancels end
-
-//user Screens
-export const openCreateTodoScreen = () => ({ type: "OPEN_CREATE_TODO_SCREEN" });
-
-export const userOpenRenameScreen = (id, completed) => ({
-  type: "USER_OPEN_RENAME_SCREEN",
-  payload: { id, completed },
-});
-//user Screens end
+export {
+  createTodo,
+  createTodoSuccess,
+  createTodoFailed,
+  deleteTodo,
+  deleteTodoSuccess,
+  deleteTodoFailed,
+  getTodos,
+  getTodosSuccess,
+  getTodosFailed,
+  completeStatusUpdate,
+  completeStatusUpdateSuccess,
+  completeStatusUpdateFailed,
+  titleRenamed,
+  titleRenamedSuccess,
+  titleRenamedFailed,
+  userTypedNameForNewTodo,
+  userRenamedTodo,
+  userCancelNewTodo,
+  userCancelRenameTodo,
+  openCreateTodoScreen,
+  userOpenRenameScreen,
+};
