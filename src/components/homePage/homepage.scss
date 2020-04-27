@@ -15,7 +15,7 @@
 
   &__heading:hover {
     cursor: pointer;
-    text-shadow: 2px 4px 3px #000000be;
+    text-shadow: 2px 4px 3px #0004ffbe;
     transform: scale(1.1);
   }
 
@@ -51,6 +51,16 @@
 
   &__input {
     display: inline;
+    padding: 5px;
+    border: 1px solid rgb(165, 165, 165);
+    border-radius: 4px;
+    box-shadow: 10px 13px 24px -6px rgba(0, 0, 0, 1);
+    text-align: center;
+    transition: 0.5s;
+  }
+
+  &__input:active {
+    transform: scale(1.2);
   }
 
   &__button {
