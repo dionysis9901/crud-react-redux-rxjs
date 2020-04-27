@@ -3,15 +3,15 @@ import { ofType } from "redux-observable";
 import {
   getTodosSuccess,
   getTodosFailed,
-  postCreated,
-  postFailed,
+  createTodoSuccess,
+  createTodoFailed,
   getTodos,
-  postDeleteSuccessfull,
-  postDeleteFailed,
-  completeStatusUpdateSuccesfull,
+  deleteTodoSuccess,
+  deleteTodoFailed,
+  completeStatusUpdateSuccess,
   completeStatusUpdateFailed,
-  titleChangedSuccesfull,
-  titleChangedFailed,
+  titleRenamedSuccess,
+  titleRenamedFailed,
 } from "../actions";
 import { ajax } from "rxjs/ajax";
 
@@ -43,9 +43,9 @@ export const createTodoEpic = (action$) =>
         map((res) => {
           if (res.status === 200 || res.status === 201) {
             console.log(res);
-            return postCreated();
+            return createTodoSuccess();
           } else {
-            return postFailed(res.errorMessage);
+            return createTodoFailed(res.errorMessage);
           }
         })
       );
@@ -66,9 +66,9 @@ export const deleteTodoEpic = (action$) =>
         map((res) => {
           if (res.status === 200 || res.status === 201) {
             console.log(res);
-            return postDeleteSuccessfull();
+            return deleteTodoSuccess();
           } else {
-            return postDeleteFailed(res.errorMessage);
+            return deleteTodoFailed(res.errorMessage);
           }
         })
       );
@@ -77,7 +77,7 @@ export const deleteTodoEpic = (action$) =>
 
 export const updateCompleteStatusEpic = (action$) =>
   action$.pipe(
-    ofType("TODO_COMPLETED_STATUS_CHANGED"),
+    ofType("COMPLETE_STATUS_UPDATE"),
     switchMap((action) => {
       const request = {
         url: `https://arr-todo.herokuapp.com/todos/${action.payload.id}`,
@@ -94,7 +94,7 @@ export const updateCompleteStatusEpic = (action$) =>
         map((res) => {
           if (res.status === 200 || res.status === 201) {
             console.log(res);
-            return completeStatusUpdateSuccesfull();
+            return completeStatusUpdateSuccess();
           } else {
             return completeStatusUpdateFailed(res.errorMessage);
           }
@@ -105,13 +105,13 @@ export const updateCompleteStatusEpic = (action$) =>
 
 export const updateCompletedSuccesfullEpic = (action$) =>
   action$.pipe(
-    ofType("COMPLETE_STATUS_UPDATE_SUCCESSFULL"),
+    ofType("COMPLETE_STATUS_UPDATE_SUCCESS"),
     map(() => getTodos())
   );
 
-export const titleChangedEpic = (action$) =>
+export const titleRenamedEpic = (action$) =>
   action$.pipe(
-    ofType("NEW_TITLE_CHANGED"),
+    ofType("TITLE_RENAMED"),
     switchMap((action) => {
       const request = {
         url: `https://arr-todo.herokuapp.com/todos/${action.payload.id}`,
@@ -128,9 +128,9 @@ export const titleChangedEpic = (action$) =>
         map((res) => {
           if (res.status === 200 || res.status === 201) {
             console.log(res);
-            return titleChangedSuccesfull();
+            return titleRenamedSuccess();
           } else {
-            return titleChangedFailed(res.errorMessage);
+            return titleRenamedFailed(res.errorMessage);
           }
         })
       );
@@ -139,18 +139,18 @@ export const titleChangedEpic = (action$) =>
 
 export const postDeletedEpic = (action$) =>
   action$.pipe(
-    ofType("POST_DELETED_SUCCESSFULL" || "POST_CREATED"),
+    ofType("DELETE_TODO_SUCCESS" || "CREATE_TODO_SUCCESS"),
     map(() => getTodos())
   );
 
-export const postCreatedEpic = (action$) =>
+export const createTodoSuccessEpic = (action$) =>
   action$.pipe(
-    ofType("POST_CREATED"),
+    ofType("CREATE_TODO_SUCCESS"),
     map(() => getTodos())
   );
 
-export const titleChangedSuccessEpic = (action$) =>
+export const titleRenamedSuccessEpic = (action$) =>
   action$.pipe(
-    ofType("TITLE_CHANGED_SUCCESFULL"),
+    ofType("TITLE_RENAMED_SUCCESS"),
     map(() => getTodos())
   );

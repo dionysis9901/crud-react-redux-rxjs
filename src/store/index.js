@@ -5,12 +5,12 @@ import reducer from "../reducers";
 import {
   fetchEpic,
   createTodoEpic,
-  postCreatedEpic,
+  createTodoSuccessEpic,
   deleteTodoEpic,
   postDeletedEpic,
   updateCompleteStatusEpic,
-  titleChangedEpic,
-  titleChangedSuccessEpic,
+  titleRenamedEpic,
+  titleRenamedSuccessEpic,
   updateCompletedSuccesfullEpic,
 } from "../epics";
 
@@ -18,12 +18,12 @@ const configureStore = () => {
   const epicsArr = [
     fetchEpic,
     createTodoEpic,
-    postCreatedEpic,
+    createTodoSuccessEpic,
     deleteTodoEpic,
     postDeletedEpic,
     updateCompleteStatusEpic,
-    titleChangedEpic,
-    titleChangedSuccessEpic,
+    titleRenamedEpic,
+    titleRenamedSuccessEpic,
     updateCompletedSuccesfullEpic,
   ];
   const epics = combineEpics(...epicsArr);

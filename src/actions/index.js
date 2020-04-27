@@ -11,81 +11,100 @@ export const getTodosFailed = (message) => ({
   type: "GET_TODOS_FAILED",
   payload: { message },
 });
-
+//delete
 export const deleteTodo = (id) => ({
   type: "DELETE_TODO",
   payload: { id },
 });
 
-export const postDeleteSuccessfull = () => ({
-  type: "POST_DELETED_SUCCESSFULL",
+export const deleteTodoSuccess = () => ({
+  type: "DELETE_TODO_SUCCESS",
 });
 
-export const postDeleteFailed = (msg) => ({
-  type: "POST_DELETED_FAILED",
+export const deleteTodoFailed = (msg) => ({
+  type: "DELETE_TODO_FAILED",
   payload: { msg },
 });
+//delete end
 
-export const completeStatusUpdateSuccesfull = () => ({
-  type: "COMPLETE_STATUS_UPDATE_SUCCESSFULL",
+//status
+export const completeStatusUpdate = (completed, id, title) => ({
+  type: "COMPLETE_STATUS_UPDATE",
+  payload: { completed, id, title },
+});
+
+export const completeStatusUpdateSuccess = () => ({
+  type: "COMPLETE_STATUS_UPDATE_SUCCESS",
 });
 
 export const completeStatusUpdateFailed = (msg) => ({
   type: "COMPLETE_STATUS_UPDATE_FAILED",
   payload: { msg },
 });
+//status end
+
+//create
 
 export const createTodo = (title) => ({
   type: "CREATE_TODO",
   payload: { title },
 });
 
-export const postCreated = () => ({
-  type: "POST_CREATED",
+export const createTodoSuccess = () => ({
+  type: "CREATE_TODO_SUCCESS",
 });
 
-export const postFailed = (msg) => ({
-  type: "POST_FAILED",
+export const createTodoFailed = (msg) => ({
+  type: "CREATE_TODO_FAILED",
   payload: { msg },
 });
+//create end
+//title
 
-export const todoCompletedStatusChanged = (completed, id, title) => ({
-  type: "TODO_COMPLETED_STATUS_CHANGED",
-  payload: { completed, id, title },
-});
-
-export const openModal = () => ({ type: "OPEN_MODAL" });
-
-export const getInput = (title) => ({
-  type: "GET_INPUT",
-  payload: { title },
-});
-
-export const changeTitle = (title) => ({
-  type: "CHANGE_TITLE",
-  payload: { title },
-});
-
-export const newTitleCanceled = () => ({
-  type: "NEW_TITLE_CANCELED",
-});
-export const cancelPost = () => ({ type: "CANCEL_POST" });
-
-export const newTitleChanged = (title, id, completed) => ({
-  type: "NEW_TITLE_CHANGED",
+export const titleRenamed = (title, id, completed) => ({
+  type: "TITLE_RENAMED",
   payload: { title, id, completed },
 });
 
-export const openSettings = (id, completed) => ({
-  type: "OPEN_SETTINGS",
-  payload: { id, completed },
+export const titleRenamedSuccess = () => ({
+  type: "TITLE_RENAMED_SUCCESS",
 });
 
-export const titleChangedSuccesfull = () => ({
-  type: "TITLE_CHANGED_SUCCESFULL",
-});
-
-export const titleChangedFailed = (msg) => ({
-  type: "TITLE_CHANGED_FAILED",
+export const titleRenamedFailed = (msg) => ({
+  type: "TITLE_RENAMED_FAILED",
   payload: { msg },
 });
+
+//title end
+
+//User Changes
+
+export const userTypedNameForNewTodo = (title) => ({
+  type: "USER_TYPED_NAME_FOR_NEW_TODO",
+  payload: { title },
+});
+
+export const userRenamedTodo = (title) => ({
+  type: "USER_RENAMED_TODO",
+  payload: { title },
+});
+//User Changes End
+
+//User Cancels
+
+export const userCancelNewTodo = () => ({ type: "USER_CANCEL_NEW_TODO" });
+
+export const userCancelRenameTodo = () => ({
+  type: "USER_CANCEL_RENAME_TODO",
+});
+
+//User Cancels end
+
+//user Screens
+export const openCreateTodoScreen = () => ({ type: "OPEN_CREATE_TODO_SCREEN" });
+
+export const userOpenRenameScreen = (id, completed) => ({
+  type: "USER_OPEN_RENAME_SCREEN",
+  payload: { id, completed },
+});
+//user Screens end

@@ -8,13 +8,13 @@ const HomePage = ({
   fetchData,
   createPost,
   createTodoModal,
-  openModal,
-  getInput,
-  cancelPost,
+  openCreateTodoScreen,
+  userTypedNameForNewTodo,
+  userCancelNewTodo,
   settingsOn,
-  changeTitle,
-  newTitleCanceled,
-  newTitleChanged,
+  userRenamedTodo,
+  userCancelRenameTodo,
+  titleRenamed,
   itemId,
 }) => {
   if (createTodoModal) {
@@ -26,7 +26,7 @@ const HomePage = ({
             type="text"
             placeholder="Give A Nice Title 🤖"
             className="modal__input"
-            onChange={(event) => getInput(event.target.value)}
+            onChange={(event) => userTypedNameForNewTodo(event.target.value)}
           ></input>
           <Button
             content={"Create!"}
@@ -35,7 +35,7 @@ const HomePage = ({
           />
           <Button
             content={"Back"}
-            onClick={cancelPost}
+            onClick={userCancelNewTodo}
             extraClassName={"modal__button"}
           />
         </div>
@@ -50,19 +50,19 @@ const HomePage = ({
           placeholder="Change Name 🤖"
           className="modal__input"
           onChange={(event) => {
-            return changeTitle(event.target.value);
+            return userRenamedTodo(event.target.value);
           }}
         ></input>
 
         <Button
           content={"Create new TIttle"}
-          onClick={newTitleChanged}
+          onClick={titleRenamed}
           extraClassName={"modal__button"}
         />
 
         <Button
           content={"Back"}
-          onClick={newTitleCanceled}
+          onClick={userCancelRenameTodo}
           extraClassName={"modal__button"}
         />
       </div>
@@ -73,7 +73,7 @@ const HomePage = ({
         <h1 className="homePage__heading">🥽 C R U D 🥽</h1>
         <div className="homePage__buttons__wrapper">
           <Button content={"Get Todos"} onClick={fetchData} />
-          <Button content={"Create Todo"} onClick={openModal} />
+          <Button content={"Create Todo"} onClick={openCreateTodoScreen} />
         </div>
 
         <div className="homePage__data">

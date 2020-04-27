@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getTodos,
   createTodo,
-  openModal,
-  getInput,
-  cancelPost,
-  changeTitle,
-  newTitleCanceled,
-  newTitleChanged,
+  openCreateTodoScreen,
+  userTypedNameForNewTodo,
+  userCancelNewTodo,
+  userRenamedTodo,
+  userCancelRenameTodo,
+  titleRenamed,
 } from "../../actions";
 import HomePage from "./HomePage";
 
@@ -29,16 +29,18 @@ const withProps = (Component) => (props) => {
       createTodoModal={createTodoModal}
       settingsOn={settingsOn}
       createPost={() => dispatch(createTodo(title))}
-      newTitleChanged={() => {
+      titleRenamed={() => {
         console.log(itemCompletedStatus);
-        return dispatch(newTitleChanged(newTitle, itemId, itemCompletedStatus));
+        return dispatch(titleRenamed(newTitle, itemId, itemCompletedStatus));
       }}
       fetchData={() => dispatch(getTodos())}
-      openModal={() => dispatch(openModal())}
-      getInput={(title) => dispatch(getInput(title))}
-      changeTitle={(newTitle) => dispatch(changeTitle(newTitle))}
-      cancelPost={() => dispatch(cancelPost())}
-      newTitleCanceled={() => dispatch(newTitleCanceled())}
+      openCreateTodoScreen={() => dispatch(openCreateTodoScreen())}
+      userTypedNameForNewTodo={(title) =>
+        dispatch(userTypedNameForNewTodo(title))
+      }
+      userRenamedTodo={(newTitle) => dispatch(userRenamedTodo(newTitle))}
+      userCancelNewTodo={() => dispatch(userCancelNewTodo())}
+      userCancelRenameTodo={() => dispatch(userCancelRenameTodo())}
     />
   );
 };
