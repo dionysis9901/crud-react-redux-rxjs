@@ -14,7 +14,6 @@ import {
 
 const withProps = (Component) => (props) => {
   const {
-    todos,
     createTodoModal,
     title,
     settingsOn,
@@ -25,7 +24,6 @@ const withProps = (Component) => (props) => {
   const dispatch = useDispatch();
   return (
     <HomePage
-      todos={todos}
       createTodoModal={createTodoModal}
       settingsOn={settingsOn}
       createPost={() => dispatch(createTodo(title))}

@@ -1,0 +1,13 @@
+.header {
+  &__heading {
+    font-size: 40px;
+    text-shadow: 2px 4px 3px #878787;
+    transition: 1.5s;
+  }
+
+  &__heading:hover {
+    cursor: pointer;
+    text-shadow: 2px 4px 3px #0004ffbe;
+    transform: scale(1.1);
+  }
+}

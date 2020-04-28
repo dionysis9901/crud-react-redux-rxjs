@@ -1,0 +1,11 @@
+.footer {
+  &__signature {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(241, 241, 241);
+    border-top: 1px solid rgb(214, 214, 214);
+    font-size: 12px;
+  }
+}

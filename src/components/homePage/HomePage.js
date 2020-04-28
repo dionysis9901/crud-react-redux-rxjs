@@ -1,10 +1,11 @@
 import React from "react";
 import Todo from "../todos";
 import Button from "../button";
+import Header from "../header";
+import Footer from "../footer";
 import "./homepage.scss";
 
 const HomePage = ({
-  todos,
   fetchData,
   createPost,
   createTodoModal,
@@ -19,15 +20,7 @@ const HomePage = ({
   if (createTodoModal) {
     return (
       <div className="homePage">
-        <h1 className="homePage__heading">
-          <span role="img" aria-label="glasses">
-            🥽
-          </span>{" "}
-          C R U D{" "}
-          <span role="img" aria-label="glasses">
-            🥽
-          </span>
-        </h1>
+        <Header />
         <h3 className="homePage__CreateTodoScreen">Create A New Todo!</h3>
         <div className="modal">
           <input
@@ -47,33 +40,14 @@ const HomePage = ({
             extraClassName={"modal__button"}
           />
         </div>
-
-        <div className="homePage__signature">
-          <p className="homePage__signature__text">
-            Made by Dionysis Koufis with{" "}
-            <span role="img" aria-label="heart">
-              ❤️
-            </span>{" "}
-            and{" "}
-            <span role="img" aria-label="react">
-              ⚛️
-            </span>
-          </p>
-        </div>
+        <Footer />
       </div>
     );
-  } else if (settingsOn) {
+  }
+  if (settingsOn) {
     return (
       <div className="homePage">
-        <h1 className="homePage__heading">
-          <span role="img" aria-label="glasses">
-            🥽
-          </span>{" "}
-          C R U D{" "}
-          <span role="img" aria-label="glasses">
-            🥽
-          </span>
-        </h1>
+        <Header />
         <h3 className="homePage__renameTodo">Rename Todo!</h3>
         <div className="modal">
           {" "}
@@ -97,53 +71,23 @@ const HomePage = ({
           />
         </div>
 
-        <div className="homePage__signature">
-          <p className="homePage__signature__text">
-            Made by Dionysis Koufis with{" "}
-            <span role="img" aria-label="heart">
-              ❤️
-            </span>{" "}
-            and{" "}
-            <span role="img" aria-label="react">
-              ⚛️
-            </span>
-          </p>
-        </div>
+        <Footer />
       </div>
     );
-  } else {
+  }
+  if (!settingsOn || !createTodoModal) {
     return (
       <div className="homePage">
-        <h1 className="homePage__heading">
-          <span role="img" aria-label="glasses">
-            🥽
-          </span>{" "}
-          C R U D{" "}
-          <span role="img" aria-label="glasses">
-            🥽
-          </span>
-        </h1>
+        <Header />
         <div className="homePage__buttons__wrapper">
           <Button content={"Get Todos"} onClick={fetchData} />
           <Button content={"Create Todo"} onClick={openCreateTodoScreen} />
         </div>
-
         <Todo />
-
-        <div className="homePage__signature">
-          <p className="homePage__signature__text">
-            Made by Dionysis Koufis with{" "}
-            <span role="img" aria-label="heart">
-              ❤️
-            </span>{" "}
-            and{" "}
-            <span role="img" aria-label="react">
-              ⚛️
-            </span>
-          </p>
-        </div>
+        <Footer />
       </div>
     );
   }
 };
+
 export default HomePage;

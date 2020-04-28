@@ -7,18 +7,6 @@
   flex-direction: column;
   font-family: "Open Sans", sans-serif;
 
-  &__heading {
-    font-size: 40px;
-    text-shadow: 2px 4px 3px #878787;
-    transition: 1.5s;
-  }
-
-  &__heading:hover {
-    cursor: pointer;
-    text-shadow: 2px 4px 3px #0004ffbe;
-    transform: scale(1.1);
-  }
-
   &__buttons__wrapper {
     display: flex;
     flex-direction: row;
@@ -26,15 +14,7 @@
   &__data {
     margin-top: 10px;
   }
-  &__signature {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    background-color: rgb(241, 241, 241);
-    border-top: 1px solid rgb(214, 214, 214);
-    font-size: 12px;
-  }
+
   &__CreateTodoScreen,
   &__renameTodo {
     margin-top: -10px;
