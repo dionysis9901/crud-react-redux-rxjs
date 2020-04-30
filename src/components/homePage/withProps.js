@@ -27,17 +27,17 @@ const withProps = (Component) => (props) => {
       createTodoModal={createTodoModal}
       settingsOn={settingsOn}
       createPost={() => dispatch(createTodo(title))}
-      titleRenamed={() => {
-        return dispatch(titleRenamed(newTitle, itemId, itemCompletedStatus));
-      }}
       fetchData={() => dispatch(getTodos())}
       openCreateTodoScreen={() => dispatch(openCreateTodoScreen())}
-      userTypedNameForNewTodo={(title) =>
-        dispatch(userTypedNameForNewTodo(title))
-      }
       userRenamedTodo={(newTitle) => dispatch(userRenamedTodo(newTitle))}
       userCancelNewTodo={() => dispatch(userCancelNewTodo())}
       userCancelRenameTodo={() => dispatch(userCancelRenameTodo())}
+      userTypedNameForNewTodo={(title) =>
+        dispatch(userTypedNameForNewTodo(title))
+      }
+      titleRenamed={() => {
+        return dispatch(titleRenamed(newTitle, itemId, itemCompletedStatus));
+      }}
     />
   );
 };

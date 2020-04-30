@@ -7,12 +7,12 @@ import { createTodoSuccess, createTodoFailed, getTodos } from "../actions";
 const createTodoEpic = (action$) =>
   action$.pipe(
     ofType("CREATE_TODO"),
-    switchMap((action) => {
+    switchMap(({ payload }) => {
       const request = {
         url: `https://arr-todo.herokuapp.com/todos`,
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: { userId: 1, title: action.payload.title, completed: false },
+        body: { userId: 1, title: payload.title, completed: false },
       };
 
       return ajax(request).pipe(

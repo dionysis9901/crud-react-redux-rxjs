@@ -6,15 +6,15 @@ import { getTodos, titleRenamedSuccess, titleRenamedFailed } from "../actions";
 const todoRenameEpic = (action$) =>
   action$.pipe(
     ofType("TITLE_RENAMED"),
-    switchMap((action) => {
+    switchMap(({ payload }) => {
       const request = {
-        url: `https://arr-todo.herokuapp.com/todos/${action.payload.id}`,
+        url: `https://arr-todo.herokuapp.com/todos/${payload.id}`,
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: {
           userId: 1,
-          title: action.payload.title,
-          completed: action.payload.completed,
+          title: payload.title,
+          completed: payload.completed,
         },
       };
 

@@ -7,9 +7,9 @@ import { getTodos, deleteTodoSuccess, deleteTodoFailed } from "../actions";
 const deleteTodoEpic = (action$) =>
   action$.pipe(
     ofType("DELETE_TODO"),
-    switchMap((action) => {
+    switchMap(({ payload }) => {
       const request = {
-        url: `https://arr-todo.herokuapp.com/todos/${action.payload.id}`,
+        url: `https://arr-todo.herokuapp.com/todos/${payload.id}`,
         method: "DELETE",
         headers: { "content-type": "application/json" },
       };

@@ -11,15 +11,15 @@ import {
 const updateStatusEpic = (action$) =>
   action$.pipe(
     ofType("COMPLETE_STATUS_UPDATE"),
-    switchMap((action) => {
+    switchMap(({ payload }) => {
       const request = {
-        url: `https://arr-todo.herokuapp.com/todos/${action.payload.id}`,
+        url: `https://arr-todo.herokuapp.com/todos/${payload.id}`,
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: {
           userId: 1,
-          title: action.payload.title,
-          completed: !action.payload.completed,
+          title: payload.title,
+          completed: !payload.completed,
         },
       };
 
