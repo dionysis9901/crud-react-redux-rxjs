@@ -42,6 +42,4 @@ const withProps = (Component) => (props) => {
   );
 };
 
-//check ITEM ID IS NOT USED RIGHT NOW
-
 export default withProps;

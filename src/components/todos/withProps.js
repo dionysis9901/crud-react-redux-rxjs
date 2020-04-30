@@ -36,17 +36,3 @@ const withProps = (Component) => (props) => {
   );
 };
 export default withProps;
-
-{
-  /* <Todo
-userId={userId}
-id={id}
-title={title}
-completed={completed}
-userOpenRenameScreen={() => dispatch(userOpenRenameScreen(id, completed))}
-deleteTodo={() => dispatch(deleteTodo(id))}
-completeStatusUpdate={() =>
-  dispatch(completeStatusUpdate(completed, id, title))
-}
-/> */
-}

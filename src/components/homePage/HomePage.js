@@ -75,7 +75,7 @@ const HomePage = ({
       </div>
     );
   }
-  if (!settingsOn || !createTodoModal) {
+  if (!settingsOn && !createTodoModal) {
     return (
       <div className="homePage">
         <Header />
